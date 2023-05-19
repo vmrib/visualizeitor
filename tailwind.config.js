@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js}", "./dist/index.html"],
+  content: ["./src/**/*.{html,js}", "./dist/**/*.{html,js}"],
   theme: {
     extend: {},
     colors: {
@@ -16,7 +16,11 @@ module.exports = {
       "dracula-purple": "#bd93f9",
       "dracula-red": "#ff5555",
       "dracula-yellow": "#f1fa8c",
-    }
+    },
+    fontFamily: {
+      sans: ["Inter", "sans-serif"],
+      logo: ["Righteous", "cursive"],
+    },
   },
   plugins: [],
 };
