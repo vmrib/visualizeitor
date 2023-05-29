@@ -20,17 +20,21 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/tailwind.css" />
+    <script src="js/jquery-3.6.4.js"></script>
+    <script src="js/search.js"></script>
   </head>
 
   <body
     class="flex flex-col h-screen font-sans text-dracula-foreground bg-dracula-background"
   >
     <nav class="flex items-center p-6 gap-x-16">
-      <header>
-        <h1 class="text-3xl font-logo">Visualizeitor</h1>
+      <header class="absolute">
+        <a href="index.html">
+          <h1 class="text-3xl font-logo">Visualizeitor</h1>
+        </a>
       </header>
 
-      <div class="grow grid grid-cols-2">
+      <div class="grid m-auto">
         <form
           action="./search.html"
           method="GET"
@@ -40,6 +44,7 @@
           <input
             type="text"
             name="grr"
+            id="search-bar-grr"
             placeholder="GRR"
             class="bg-dracula-background appearance-none focus:outline-none"
           />
@@ -47,7 +52,7 @@
       </div>
     </nav>
 
-    <main class="flex flex-col items-center">
+    <main class="grid grow place-items-center">
       <div class="grid grid-cols-8 grid-rows-6">
         <div class="grid place-content-end justify-center">
           <span>1º</span>
@@ -272,6 +277,54 @@
           class="p-6 mx-4 my-2 border-2 border-dracula-selection rounded-2xl text-dracula-selection"
         >
           <span>TG II</span>
+        </div>
+
+        <div id="modal-subject" hidden>
+          <div class="modal-subject-content">
+            <div class="modal-subject-header">
+              <h2 id="modal-subject-title">Codigo</h2>
+              <h3>Disciplina</h3>
+              <span class="modal-subject-close">&times;</span>
+            </div>
+            <div class="modal-subject-body">
+              <header>Ano/Semestre</header>
+              <ul>
+                <li>
+                  <span>Nota</span>
+                  <span>-</span>
+                </li>
+                <li>
+                  <span>Frequência</span>
+                  <span>-</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div id="modal-history" hidden>
+          <div class="modal-history-content">
+            <div class="modal-history-header">
+              <h2>Codigo</h2>
+              <h3>Disciplina</h3>
+              <span class="modal-history-close">&times;</span>
+            </div>
+            <div class="modal-history-body">
+              <section>
+                <header>Ano/Semestre</header>
+                <ul>
+                  <li>
+                    <span>Nota</span>
+                    <span>-</span>
+                  </li>
+                  <li>
+                    <span>Frequência</span>
+                    <span>-</span>
+                  </li>
+              </section>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </main>
