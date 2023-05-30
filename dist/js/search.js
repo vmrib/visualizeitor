@@ -48,17 +48,17 @@ function XMLToHistory(xml) {
     })
     .get()
     .reduce((acc, curr) => {
-
       let entry;
 
-      if (curr.type !== "Trabalho de Graduação I" && curr.type !== "Trabalho de Graduação II") {
+      if (
+        curr.type !== "Trabalho de Graduação I" &&
+        curr.type !== "Trabalho de Graduação II"
+      ) {
         entry = curr.subject;
-      }
-      else if (curr.type === "Trabalho de Graduação I") {
-        entry = "TG I";
-      }
-      else if (curr.type === "Trabalho de Graduação II") {
-        entry = "TG II";
+      } else if (curr.type === "Trabalho de Graduação I") {
+        entry = "TG-I";
+      } else if (curr.type === "Trabalho de Graduação II") {
+        entry = "TG-II";
       }
 
       if (acc[entry] === undefined) {
@@ -80,7 +80,6 @@ function XMLToHistory(xml) {
 }
 
 function renderHistory() {
-
   if (history === null) {
     $("main").html(
       `<div class="grow">
@@ -88,9 +87,7 @@ function renderHistory() {
         <h2 class="text-5xl font-bold text-center text-dracula-current-line">Erro ao carregar o banco de dados</h2>
       </div>`
     );
-  }
-
-  else if (Object.keys(history).length === 0) {
+  } else if (Object.keys(history).length === 0) {
     $("main").html(
       `<div class="grow">
         <h1 class="text-9xl font-bold text-center text-dracula-current-line mb-10">¯\\_(ツ)_/¯</h1>
@@ -98,7 +95,6 @@ function renderHistory() {
       </div>`
     );
   }
-
 
   Object.entries(history).forEach(([subject, history]) => {
     let color;
@@ -129,7 +125,7 @@ function renderHistory() {
     }
 
     if (recent.type !== "Optativas") {
-      $("span:contains('" + subject + "')")
+      $(`#${subject}`)
         .parent()
         .addClass("cursor-pointer")
         .removeClass("border-dracula-selection")
@@ -137,14 +133,18 @@ function renderHistory() {
         .on("click", () => {
           $("main").append(
             `<div class="modal-subject-overlay fixed top-0 w-full h-full grid place-items-center bg-opacity-50 bg-dracula-background z-10">
-              <div class="modal-subject flex flex-col items-center justify-center bg-dracula-background shadow-md rounded-2xl p-4">
+              <div class="modal-subject flex flex-col items-center justify-center bg-dracula-background shadow-md rounded-2xl p-4 min-w-[20rem]">
                 <span class="modal-subject-close cursor-pointer ml-auto text-xzl text-bold">&times;</span>
                 <div class="flex flex-col items-center justify-center mb-8 pl-2 pr-2 w-full">
                   <h1 class="font-bold text-2xl text-center text-dracula-foreground">${subject}</h1>
-                  <h2 class="font-semibold text-center text-dracula-foreground">${recent.name}</h2>
+                  <h2 class="font-semibold text-center text-dracula-foreground">${
+                    recent.name
+                  }</h2>
                 </div>
                 <div class="flex items-center pl-2 pr-2 w-full gap-20">
-                  <h3 class="text-lg font-bold text-dracula-foreground">${recent.year}/${recent.period}</h3>
+                  <h3 class="text-lg font-bold text-dracula-foreground">${
+                    recent.year
+                  }/${recent.period}</h3>
                 </div>
                 <div class="flex items-center justify-between mt-2 pl-2 pr-2 w-full gap-20">
                   <h4 class="font-semibold text-center text-dracula-foreground">Nota</h4>
@@ -158,14 +158,18 @@ function renderHistory() {
             </div>`
           );
 
-          $(".modal-subject-close").on("click", () => $(".modal-subject-overlay").remove());
-          $(".modal-subject-overlay").on("click", () => $(".modal-subject-overlay").remove());
+          $(".modal-subject-close").on("click", () =>
+            $(".modal-subject-overlay").remove()
+          );
+          $(".modal-subject-overlay").on("click", () =>
+            $(".modal-subject-overlay").remove()
+          );
           $(".modal-subject").on("click", (e) => e.stopPropagation());
         })
         .on("contextmenu", () => {
           $("main").append(
             `<div class="modal-history-overlay fixed top-0 w-full h-full grid place-items-center bg-opacity-50 bg-dracula-background z-10">
-              <div class="modal-history flex flex-col items-center justify-center bg-dracula-background shadow-md rounded-2xl p-4">
+              <div class="modal-history flex flex-col items-center justify-center bg-dracula-background shadow-md rounded-2xl p-4 min-w-[20rem]">
                 <span class="modal-history-close cursor-pointer ml-auto text-xzl text-bold">&times;</span>
                 <div class="flex flex-col items-center justify-center mb-8 pl-2 pr-2 w-full">
                   <h1 class="font-bold text-2xl text-center text-dracula-foreground">${subject}</h1>
@@ -175,15 +179,21 @@ function renderHistory() {
               </div>
             </div>`
           );
-          
-          $(".modal-history-close").on("click", () => $(".modal-history-overlay").remove());
-          $(".modal-history-overlay").on("click", () => $(".modal-history-overlay").remove());
+
+          $(".modal-history-close").on("click", () =>
+            $(".modal-history-overlay").remove()
+          );
+          $(".modal-history-overlay").on("click", () =>
+            $(".modal-history-overlay").remove()
+          );
           $(".modal-history").on("click", (e) => e.stopPropagation());
-          
+
           history.forEach((entry) => {
             $(".modal-history-content").append(
               `<div class="flex items-center pl-2 pr-2 w-full gap-20">
-                <h3 class="text-lg font-bold text-dracula-foreground">${entry.year}/${entry.period}</h3>
+                <h3 class="text-lg font-bold text-dracula-foreground">${
+                  entry.year
+                }/${entry.period}</h3>
               </div>
               <div class="flex items-center justify-between mt-2 pl-2 pr-2 w-full gap-20">
                 <h4 class="font-semibold text-center text-dracula-foreground">Nota</h4>
@@ -194,13 +204,11 @@ function renderHistory() {
                 <span class="shrink">${parseInt(entry.frequency)}</span>
               </div>`
             );
-    
           });
-    
+
           return false;
         });
-
-      }
+    }
     // } else if (recent.type === "Optativas") {
     //   $("span:contains('OPT')")
     //     .parent()
