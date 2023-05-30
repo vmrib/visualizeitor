@@ -48,11 +48,24 @@ function XMLToHistory(xml) {
     })
     .get()
     .reduce((acc, curr) => {
-      if (acc[curr.subject] === undefined) {
-        acc[curr.subject] = [];
+
+      let entry;
+
+      if (curr.type !== "Trabalho de Graduação I" && curr.type !== "Trabalho de Graduação II") {
+        entry = curr.subject;
+      }
+      else if (curr.type === "Trabalho de Graduação I") {
+        entry = "TG I";
+      }
+      else if (curr.type === "Trabalho de Graduação II") {
+        entry = "TG II";
       }
 
-      acc[curr.subject].push({
+      if (acc[entry] === undefined) {
+        acc[entry] = [];
+      }
+
+      acc[entry].push({
         year: curr.year,
         period: curr.period,
         status: curr.status,
@@ -115,7 +128,7 @@ function renderHistory() {
         color = "bg-dracula-foreground border-dracula-foreground";
     }
 
-    if (recent.type === "Obrigatórias") {
+    if (recent.type !== "Optativas") {
       $("span:contains('" + subject + "')")
         .parent()
         .addClass("cursor-pointer")
