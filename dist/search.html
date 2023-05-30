@@ -27,7 +27,9 @@
   <body
     class="flex flex-col h-screen font-sans text-dracula-foreground bg-dracula-background"
   >
-    <nav class="absolute top-0 left-0 w-full flex items-center p-6 gap-x-16">
+    <nav
+      class="fixed top-0 left-0 w-full flex items-center p-6 gap-x-16 bg-dracula-background"
+    >
       <header class="absolute">
         <a href="index.html">
           <h1 class="text-3xl font-logo pl-4">Visualizeitor</h1>
@@ -52,7 +54,7 @@
       </div>
     </nav>
 
-    <main class="grid grow place-items-center">
+    <main class="grid grow place-items-center mt-10">
       <div class="grid grid-cols-8 grid-rows-6 gap-y-3 gap-x-9">
         <div class="grid place-content-end justify-center">
           <span>1º</span>
@@ -278,55 +280,13 @@
         >
           <span id="TG-II">TG II</span>
         </div>
-
-        <div id="modal-subject" hidden>
-          <div class="modal-subject-content">
-            <div class="modal-subject-header">
-              <h2 id="modal-subject-title">Codigo</h2>
-              <h3>Disciplina</h3>
-              <span class="modal-subject-close">&times;</span>
-            </div>
-            <div class="modal-subject-body">
-              <header>Ano/Semestre</header>
-              <ul>
-                <li>
-                  <span>Nota</span>
-                  <span>-</span>
-                </li>
-                <li>
-                  <span>Frequência</span>
-                  <span>-</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div id="modal-history" hidden>
-          <div class="modal-history-content">
-            <div class="modal-history-header">
-              <h2>Codigo</h2>
-              <h3>Disciplina</h3>
-              <span class="modal-history-close">&times;</span>
-            </div>
-            <div class="modal-history-body">
-              <section>
-                <header>Ano/Semestre</header>
-                <ul>
-                  <li>
-                    <span>Nota</span>
-                    <span>-</span>
-                  </li>
-                  <li>
-                    <span>Frequência</span>
-                    <span>-</span>
-                  </li>
-              </section>
-              </ul>
-            </div>
-          </div>
-        </div>
       </div>
+
+      <section class="mt-12">
+        <header>
+          <h2 class="text-3xl font-bold text-start">Optativas</h2>
+        </header>
+      </section>
     </main>
   </body>
 </html>
