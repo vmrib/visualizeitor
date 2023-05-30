@@ -6,6 +6,7 @@ module.exports = {
     colors: {
       "dracula-background": "#282a36",
       "dracula-foreground": "#f8f8f2",
+      "dracula-panel": "#20222c",
       "dracula-selection": "#44475a",
       "dracula-current-line": "#44475a",
       "dracula-comment": "#6272a4",
