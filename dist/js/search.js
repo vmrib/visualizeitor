@@ -209,13 +209,6 @@ function renderHistory() {
           return false;
         });
     }
-    // } else if (recent.type === "Optativas") {
-    //   $("span:contains('OPT')")
-    //     .parent()
-    //     .addClass("cursor-pointer")
-    //     .removeClass("border-dracula-selection")
-    //     .addClass(color);
-    // }
   });
 }
 
