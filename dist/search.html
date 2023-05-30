@@ -28,7 +28,7 @@
     class="flex flex-col h-screen font-sans text-dracula-foreground bg-dracula-background"
   >
     <nav
-      class="fixed top-0 left-0 w-full flex items-center p-6 gap-x-16 bg-dracula-background"
+      class="fixed top-0 left-0 w-full flex items-center p-6 gap-x-16 bg-dracula-panel shadow-lg"
     >
       <header class="absolute">
         <a href="index.html">
@@ -48,37 +48,37 @@
             name="grr"
             id="search-bar-grr"
             placeholder="GRR"
-            class="bg-dracula-background appearance-none focus:outline-none"
+            class="bg-dracula-panel appearance-none focus:outline-none"
           />
         </form>
       </div>
     </nav>
 
-    <main class="grid grow place-items-center mt-10">
-      <div class="grid grid-cols-8 grid-rows-6 gap-y-3 gap-x-9">
+    <main class="grid grow place-items-center mt-16">
+      <div class="grid grid-cols-8 grid-rows-6 gap-y-3 gap-x-7">
         <div class="grid place-content-end justify-center">
-          <span>1º</span>
+          <span class="font-semibold">1º</span>
         </div>
         <div class="grid place-content-end justify-center">
-          <span>2º</span>
+          <span class="font-semibold">2º</span>
         </div>
         <div class="grid place-content-end justify-center">
-          <span>3º</span>
+          <span class="font-semibold">3º</span>
         </div>
         <div class="grid place-content-end justify-center">
-          <span>4º</span>
+          <span class="font-semibold">4º</span>
         </div>
         <div class="grid place-content-end justify-center">
-          <span>5º</span>
+          <span class="font-semibold">5º</span>
         </div>
         <div class="grid place-content-end justify-center">
-          <span>6º</span>
+          <span class="font-semibold">6º</span>
         </div>
         <div class="grid place-content-end justify-center">
-          <span>7º</span>
+          <span class="font-semibold">7º</span>
         </div>
         <div class="grid place-content-end justify-center">
-          <span>8º</span>
+          <span class="font-semibold">8º</span>
         </div>
         <div
           class="p-7 text-center border-2 border-dracula-selection rounded-2xl text-dracula-selection"
@@ -118,7 +118,7 @@
         <div
           class="p-7 text-center border-2 border-dracula-selection rounded-2xl text-dracula-selection"
         >
-          <span>OPT</span>
+          <span id="TG-II">TG II</span>
         </div>
         <div
           class="p-7 text-center border-2 border-dracula-selection rounded-2xl text-dracula-selection"
@@ -155,11 +155,7 @@
         >
           <span id="CI211">CI211</span>
         </div>
-        <div
-          class="p-7 text-center border-2 border-dracula-selection rounded-2xl text-dracula-selection"
-        >
-          <span>OPT</span>
-        </div>
+        <div></div>
         <div
           class="p-7 text-center border-2 border-dracula-selection rounded-2xl text-dracula-selection"
         >
@@ -193,13 +189,9 @@
         <div
           class="p-7 text-center border-2 border-dracula-selection rounded-2xl text-dracula-selection"
         >
-          <span>OPT</span>
+          <span id="TG-I">TG I</span>
         </div>
-        <div
-          class="p-7 text-center border-2 border-dracula-selection rounded-2xl text-dracula-selection"
-        >
-          <span>OPT</span>
-        </div>
+        <div></div>
         <div
           class="p-7 text-center border-2 border-dracula-selection rounded-2xl text-dracula-selection"
         >
@@ -230,16 +222,8 @@
         >
           <span id="CI218">CI218</span>
         </div>
-        <div
-          class="p-7 text-center border-2 border-dracula-selection rounded-2xl text-dracula-selection"
-        >
-          <span>OPT</span>
-        </div>
-        <div
-          class="p-7 text-center border-2 border-dracula-selection rounded-2xl text-dracula-selection"
-        >
-          <span>OPT</span>
-        </div>
+        <div></div>
+        <div></div>
         <div
           class="p-7 text-center border-2 border-dracula-selection rounded-2xl text-dracula-selection"
         >
@@ -270,22 +254,15 @@
         >
           <span id="CI220">CI220</span>
         </div>
-        <div
-          class="p-7 text-center border-2 border-dracula-selection rounded-2xl text-dracula-selection"
-        >
-          <span id="TG-I">TG I</span>
-        </div>
-        <div
-          class="p-7 text-center border-2 border-dracula-selection rounded-2xl text-dracula-selection"
-        >
-          <span id="TG-II">TG II</span>
-        </div>
+        <div></div>
+        <div></div>
       </div>
 
-      <section class="mt-12">
+      <section class="mt-16 grow flex flex-col gap-8 mb-8 ml-28 pr-28">
         <header>
-          <h2 class="text-3xl font-bold text-start">Optativas</h2>
+          <h2 class="text-3xl font-bold text-center">Optativas</h2>
         </header>
+        <div class="optative-grade flex flex-wrap gap-y-3 gap-x-3"></div>
       </section>
     </main>
   </body>

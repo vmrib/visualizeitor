@@ -124,91 +124,97 @@ function renderHistory() {
         color = "bg-dracula-foreground border-dracula-foreground";
     }
 
-    if (recent.type !== "Optativas") {
-      $(`#${subject}`)
-        .parent()
-        .addClass("cursor-pointer")
-        .removeClass("border-dracula-selection")
-        .addClass(color)
-        .on("click", () => {
-          $("main").append(
-            `<div class="modal-subject-overlay fixed top-0 w-full h-full grid place-items-center bg-opacity-50 bg-dracula-background z-10">
-              <div class="modal-subject flex flex-col items-center justify-center bg-dracula-background shadow-md rounded-2xl p-4 min-w-[20rem]">
-                <span class="modal-subject-close cursor-pointer ml-auto text-xzl text-bold">&times;</span>
-                <div class="flex flex-col items-center justify-center mb-8 pl-2 pr-2 w-full">
-                  <h1 class="font-bold text-2xl text-center text-dracula-foreground">${subject}</h1>
-                  <h2 class="font-semibold text-center text-dracula-foreground">${
-                    recent.name
-                  }</h2>
-                </div>
-                <div class="flex items-center pl-2 pr-2 w-full gap-20">
-                  <h3 class="text-lg font-bold text-dracula-foreground">${
-                    recent.year
-                  }/${recent.period}</h3>
-                </div>
-                <div class="flex items-center justify-between mt-2 pl-2 pr-2 w-full gap-20">
-                  <h4 class="font-semibold text-center text-dracula-foreground">Nota</h4>
-                  <span class="shrink">${recent.grade}</span>
-                </div>
-                <div class="flex items-center justify-between mb-6 mt-2 pl-2 pr-2 gap-20 w-full">
-                  <h4 class="font-semibold text-center text-dracula-foreground">Frequência</h4>
-                  <span class="shrink">${parseInt(recent.frequency)}</span>
-                </div>
+    if (recent.type === "Optativas") {
+      $(".optative-grade").append(
+        `<div class="p-7 text-center border-2 border-dracula-selection rounded-2xl text-dracula-selection">
+          <span id="${subject}">${subject}</span>
+        </div>`
+      );
+    }
+
+    $(`#${subject}`)
+      .parent()
+      .addClass("cursor-pointer")
+      .removeClass("border-dracula-selection")
+      .addClass(color)
+      .on("click", () => {
+        $("main").append(
+          `<div class="modal-subject-overlay fixed top-0 w-full h-full grid place-items-center bg-opacity-50 bg-dracula-background z-10">
+            <div class="modal-subject flex flex-col items-center justify-center bg-dracula-panel shadow-xl rounded-2xl p-4 min-w-[20rem]">
+              <span class="modal-subject-close cursor-pointer ml-auto text-xzl text-bold">&times;</span>
+              <div class="flex flex-col items-center justify-center mb-8 pl-2 pr-2 w-full">
+                <h1 class="font-bold text-2xl text-center text-dracula-foreground">${subject}</h1>
+                <h2 class="font-semibold text-center text-dracula-foreground">${
+                  recent.name
+                }</h2>
               </div>
-            </div>`
-          );
-
-          $(".modal-subject-close").on("click", () =>
-            $(".modal-subject-overlay").remove()
-          );
-          $(".modal-subject-overlay").on("click", () =>
-            $(".modal-subject-overlay").remove()
-          );
-          $(".modal-subject").on("click", (e) => e.stopPropagation());
-        })
-        .on("contextmenu", () => {
-          $("main").append(
-            `<div class="modal-history-overlay fixed top-0 w-full h-full grid place-items-center bg-opacity-50 bg-dracula-background z-10">
-              <div class="modal-history flex flex-col items-center justify-center bg-dracula-background shadow-md rounded-2xl p-4 min-w-[20rem]">
-                <span class="modal-history-close cursor-pointer ml-auto text-xzl text-bold">&times;</span>
-                <div class="flex flex-col items-center justify-center mb-8 pl-2 pr-2 w-full">
-                  <h1 class="font-bold text-2xl text-center text-dracula-foreground">${subject}</h1>
-                  <h2 class="font-semibold text-center text-dracula-foreground">${recent.name}</h2>
-                </div>
-                <div class="modal-history-content overflow-auto max-h-60 p-0 w-full"></div>
-              </div>
-            </div>`
-          );
-
-          $(".modal-history-close").on("click", () =>
-            $(".modal-history-overlay").remove()
-          );
-          $(".modal-history-overlay").on("click", () =>
-            $(".modal-history-overlay").remove()
-          );
-          $(".modal-history").on("click", (e) => e.stopPropagation());
-
-          history.forEach((entry) => {
-            $(".modal-history-content").append(
-              `<div class="flex items-center pl-2 pr-2 w-full gap-20">
+              <div class="flex items-center pl-2 pr-2 w-full gap-20">
                 <h3 class="text-lg font-bold text-dracula-foreground">${
-                  entry.year
-                }/${entry.period}</h3>
+                  recent.year
+                }/${recent.period}</h3>
               </div>
               <div class="flex items-center justify-between mt-2 pl-2 pr-2 w-full gap-20">
                 <h4 class="font-semibold text-center text-dracula-foreground">Nota</h4>
-                <span class="shrink">${entry.grade}</span>
+                <span class="shrink">${recent.grade}</span>
               </div>
-              <div class="flex items-center justify-between mb-8 mt-2 pl-2 pr-2 gap-20 w-full">
+              <div class="flex items-center justify-between mb-6 mt-2 pl-2 pr-2 gap-20 w-full">
                 <h4 class="font-semibold text-center text-dracula-foreground">Frequência</h4>
-                <span class="shrink">${parseInt(entry.frequency)}</span>
-              </div>`
-            );
-          });
+                <span class="shrink">${parseInt(recent.frequency)}</span>
+              </div>
+            </div>
+          </div>`
+        );
 
-          return false;
+        $(".modal-subject-close").on("click", () =>
+          $(".modal-subject-overlay").remove()
+        );
+        $(".modal-subject-overlay").on("click", () =>
+          $(".modal-subject-overlay").remove()
+        );
+        $(".modal-subject").on("click", (e) => e.stopPropagation());
+      })
+      .on("contextmenu", () => {
+        $("main").append(
+          `<div class="modal-history-overlay fixed top-0 w-full h-full grid place-items-center bg-opacity-50 bg-dracula-background z-10">
+            <div class="modal-history flex flex-col items-center justify-center bg-dracula-panel shadow-xl rounded-2xl p-4 min-w-[20rem]">
+              <span class="modal-history-close cursor-pointer ml-auto text-xzl text-bold">&times;</span>
+              <div class="flex flex-col items-center justify-center mb-8 pl-2 pr-2 w-full">
+                <h1 class="font-bold text-2xl text-center text-dracula-foreground">${subject}</h1>
+                <h2 class="font-semibold text-center text-dracula-foreground">${recent.name}</h2>
+              </div>
+              <div class="modal-history-content overflow-auto max-h-60 p-0 w-full"></div>
+            </div>
+          </div>`
+        );
+
+        $(".modal-history-close").on("click", () =>
+          $(".modal-history-overlay").remove()
+        );
+        $(".modal-history-overlay").on("click", () =>
+          $(".modal-history-overlay").remove()
+        );
+        $(".modal-history").on("click", (e) => e.stopPropagation());
+
+        history.forEach((entry) => {
+          $(".modal-history-content").append(
+            `<div class="flex items-center pl-2 pr-2 w-full gap-20">
+              <h3 class="text-lg font-bold text-dracula-foreground">${
+                entry.year
+              }/${entry.period}</h3>
+            </div>
+            <div class="flex items-center justify-between mt-2 pl-2 pr-2 w-full gap-20">
+              <h4 class="font-semibold text-center text-dracula-foreground">Nota</h4>
+              <span class="shrink">${entry.grade}</span>
+            </div>
+            <div class="flex items-center justify-between mb-8 mt-2 pl-2 pr-2 gap-20 w-full">
+              <h4 class="font-semibold text-center text-dracula-foreground">Frequência</h4>
+              <span class="shrink">${parseInt(entry.frequency)}</span>
+            </div>`
+          );
         });
-    }
+
+      return false;
+    });
   });
 }
 
