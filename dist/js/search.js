@@ -125,7 +125,16 @@ function renderHistory() {
     }
 
     if (recent.type === "Optativas") {
+      $(".optative-grade").show();
       $(".optative-grade").append(
+        `<div class="p-7 text-center border-2 border-dracula-selection rounded-2xl text-dracula-selection">
+          <span id="${subject}">${subject}</span>
+        </div>`
+      );
+    }
+    else if (recent.type === "Disciplinas de outros cursos") {
+      $(".elective-grade").show();
+      $(".elective-grade").append(
         `<div class="p-7 text-center border-2 border-dracula-selection rounded-2xl text-dracula-selection">
           <span id="${subject}">${subject}</span>
         </div>`
